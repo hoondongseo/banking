@@ -1,11 +1,12 @@
 'use client'
 
-import Link from 'next/link'
-import Image from 'next/image'
 import { sidebarLinks } from '@/constants'
-import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
+import Image from 'next/image'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation';
 import Footer from './Footer';
+import PlaidLink from './PlaidLink';
 
 const Sidebar = ({ user }: SidebarProps) => {
     const pathname = usePathname();
@@ -42,16 +43,14 @@ const Sidebar = ({ user }: SidebarProps) => {
                                     })}
                                 />
                             </div>
-                            <p className={cn('sidebar-label', {
-                                '!text-white': isActive
-                            })}>
+                            <p className={cn('sidebar-label', { '!text-white': isActive })}>
                                 {item.label}
                             </p>
                         </Link>
                     )
                 })}
 
-                USER
+                <PlaidLink user={user} />
             </nav>
 
             <Footer user={user} />

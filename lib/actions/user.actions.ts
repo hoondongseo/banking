@@ -46,7 +46,7 @@ export const signIn = async ({ email, password }: signInProps) => {
 
         const user = await getUserInfo({ userId: session.userId });
 
-        return parseStringify(response);
+        return parseStringify(user);
     } catch (error) {
         console.error('Error', error);
     }
@@ -110,7 +110,7 @@ export async function getLoggedInUser() {
         const result = await account.get();
 
         const user = await getUserInfo({ userId: result.$id });
-        
+
         return parseStringify(user);
     } catch (error) {
         console.log(error)
