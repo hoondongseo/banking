@@ -43,7 +43,7 @@ const Home = async ({ searchParams: { id, page } }:
 
                 <RecentTransactions
                     accounts={accountsData}
-                    transactions={accounts?.transactions}
+                    transactions={account?.transactions}
                     appwriteItemId={appwriteItemId}
                     page={currentPage}
                 />
@@ -51,7 +51,7 @@ const Home = async ({ searchParams: { id, page } }:
 
             <RightSidebar
                 user={loggedIn}
-                transactions={accounts?.transactions}
+                transactions={account?.transactions}
                 banks={accountsData?.slice(0, 2)}
             />
         </section>
