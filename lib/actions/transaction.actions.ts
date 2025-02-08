@@ -6,7 +6,7 @@ import { parseStringify } from "../utils";
 
 const {
     APPWRITE_DATABASE_ID: DATABASE_ID,
-    APPWRITE_TRANSACTION_COLLECTION_ID: TRANSACTION_COLLECTION_ID,
+    APPWRITE_TRANSACTION_COLLECTION_ID: TRANSACTION_COLLECTION_ID
 } = process.env;
 
 export const createTransaction = async (transaction: CreateTransactionProps) => {
@@ -37,13 +37,13 @@ export const getTransactionsByBankId = async ({ bankId }: getTransactionsByBankI
         const senderTransactions = await database.listDocuments(
             DATABASE_ID!,
             TRANSACTION_COLLECTION_ID!,
-            [Query.equal('senderBankId', bankId)],
+            [Query.equal('senderBankId', bankId)]
         )
 
         const receiverTransactions = await database.listDocuments(
             DATABASE_ID!,
             TRANSACTION_COLLECTION_ID!,
-            [Query.equal('receiverBankId', bankId)],
+            [Query.equal('receiverBankId', bankId)]
         );
 
         const transactions = {
@@ -58,4 +58,4 @@ export const getTransactionsByBankId = async ({ bankId }: getTransactionsByBankI
     } catch (error) {
         console.log(error);
     }
-}
+};

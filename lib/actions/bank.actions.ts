@@ -12,6 +12,7 @@ import {
 
 import { parseStringify } from "../utils";
 import { plaidClient } from "../plaid";
+
 import { getTransactionsByBankId } from "./transaction.actions";
 import { getBanks, getBank } from "./user.actions";
 
@@ -139,9 +140,9 @@ export const getInstitution = async ({
             country_codes: ["US"] as CountryCode[],
         });
 
-        const intitution = institutionResponse.data.institution;
+        const institution = institutionResponse.data.institution;
 
-        return parseStringify(intitution);
+        return parseStringify(institution);
     } catch (error) {
         console.error("An error occurred while getting the accounts:", error);
     }
@@ -189,7 +190,7 @@ export const getTransactions = async ({
 export const createTransfer = async () => {
     const transferAuthRequest: TransferAuthorizationCreateRequest = {
         access_token: "access-sandbox-cddd20c1-5ba8-4193-89f9-3a0b91034c25",
-        account_id: "Zl8GWV1jqdTgjoKnxQn1HBxxVBanm5FxZpnQk",
+        account_id: "Le9NK5l8epSjaAQJrbLouerd8Kg4aVtk3o96l",
         funding_account_id: "442d857f-fe69-4de2-a550-0c19dc4af467",
         type: "credit" as TransferType,
         network: "ach" as TransferNetwork,
@@ -206,7 +207,7 @@ export const createTransfer = async () => {
 
         const transferCreateRequest: TransferCreateRequest = {
             access_token: "access-sandbox-cddd20c1-5ba8-4193-89f9-3a0b91034c25",
-            account_id: "Zl8GWV1jqdTgjoKnxQn1HBxxVBanm5FxZpnQk",
+            account_id: "Le9NK5l8epSjaAQJrbLouerd8Kg4aVtk3o96l",
             description: "payment",
             authorization_id: authorizationId,
         };
