@@ -9,6 +9,11 @@ import {
     TransferType,
 } from "plaid";
 
+const {
+    DWOLLA_ACCESS_TOKEN: ACCESS_TOKEN,
+    DWOLLA_ACCOUNT_ID: ACCOUNT_ID,
+    DWOLLA_FUNDING_ACCOUNT_ID: FUNDING_ACCOUNT_ID,
+} = process.env;
 
 import { parseStringify } from "../utils";
 import { plaidClient } from "../plaid";
@@ -189,9 +194,9 @@ export const getTransactions = async ({
 // Create Transfer
 export const createTransfer = async () => {
     const transferAuthRequest: TransferAuthorizationCreateRequest = {
-        access_token: "access-sandbox-cddd20c1-5ba8-4193-89f9-3a0b91034c25",
-        account_id: "Le9NK5l8epSjaAQJrbLouerd8Kg4aVtk3o96l",
-        funding_account_id: "442d857f-fe69-4de2-a550-0c19dc4af467",
+        access_token: ACCESS_TOKEN!,
+        account_id: ACCOUNT_ID!,
+        funding_account_id: FUNDING_ACCOUNT_ID!,
         type: "credit" as TransferType,
         network: "ach" as TransferNetwork,
         amount: "10.00",
@@ -206,8 +211,8 @@ export const createTransfer = async () => {
         const authorizationId = transferAuthResponse.data.authorization.id;
 
         const transferCreateRequest: TransferCreateRequest = {
-            access_token: "access-sandbox-cddd20c1-5ba8-4193-89f9-3a0b91034c25",
-            account_id: "Le9NK5l8epSjaAQJrbLouerd8Kg4aVtk3o96l",
+            access_token: ACCESS_TOKEN!,
+            account_id: ACCOUNT_ID!,
             description: "payment",
             authorization_id: authorizationId,
         };
